@@ -19,4 +19,26 @@ class RoyalAppRepository extends Request
 
         return [];
     }
+    public function getAuthors()
+    {
+        $response = $this->get('authors', [
+            [
+                'orderBy' => 'id',
+                'direction' => 'ASC',
+                'limit' => 12,
+                'page' => 1
+            ]
+        ])->getBody()->getContents();
+        $response = json_decode($response);
+        return $response;
+    }
+    public function getAuthor($id)
+    {
+        $response = $this->get("authors/$id")->getBody()->getContents();
+        return json_decode($response);
+    }
+    public function authorDelete($Id)
+    {
+        return $this->delete("authors/$Id");
+    }
 }
