@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Session;
 
 class RoyalAppRepository extends Request implements RoyalAppInterface
 {
+    public function __construct()
+    {
+        $this->base_url = "https://candidate-testing.api.royal-apps.io/api/v2/";
+        $this->authorization = "d8b8c6ad19ec6bc8e8c6faf180d2cc3bfd79dffb9d91602c15ffff85ab38c185effd4520670cd7af";
+        parent::__construct();
+    }
     public function login($user)
     {
 

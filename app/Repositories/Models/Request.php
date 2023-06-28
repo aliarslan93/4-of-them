@@ -7,15 +7,15 @@ use GuzzleHttp\Client;
 class Request
 {
 
-    const BASE_URL = 'https://candidate-testing.api.royal-apps.io/api/v2/';
-    const Authorization = "d8b8c6ad19ec6bc8e8c6faf180d2cc3bfd79dffb9d91602c15ffff85ab38c185effd4520670cd7af";
     protected $client;
+    protected $base_url;
+    protected $authorization;
     protected $options = [];
     protected array $headers = [];
     public function __construct()
     {
         $this->client = new Client(
-            ['base_uri'        => self::BASE_URL, []]
+            ['base_uri'        => $this->base_url, []]
         );
     }
 
@@ -89,7 +89,7 @@ class Request
         $this->headers = array_merge($this->headers, [
             //'X-BarrierToken' => 'XXXXX',
             "accept" => "application/json",
-            "Authorization" => self::Authorization,
+            "Authorization" => $this->authorization,
 
 
         ]);
