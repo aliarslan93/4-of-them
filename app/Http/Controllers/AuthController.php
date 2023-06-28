@@ -21,4 +21,9 @@ class AuthController extends Controller
         }
         return redirect()->back()->with('status', 'Email or Password Wrong');
     }
+    public function logoutAction()
+    {
+        session()->flush('user');
+        return redirect()->action('App\Http\Controllers\AuthController@loginIndex');
+    }
 }

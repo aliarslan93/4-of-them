@@ -22,15 +22,32 @@
         <div class="container d-flex flex-wrap">
             <ul class="nav me-auto">
                 <li class="nav-item">
-                    <a href="{!! url('/') !!}"
+                    <a href="{!! route('home') !!}"
                         class="nav-link link-body-emphasis px-2">{!! __('Home') !!}</a>
                 </li>
             </ul>
             <ul class="nav">
-                <li class="nav-item">
-                    <a href="{!! route('login') !!}"
-                        class="nav-link link-body-emphasis px-2">{!! __('Login') !!}</a>
-                </li>
+                @if (session()->has('user'))
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis px-2" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                            {!! __('Logout') !!}
+                        </a>
+                        <form action="{!! route('logout') !!}" method="POST">
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis px-2" href="{{ route('login') }}">
+                            {!! __('Login') !!}
+                        </a>
+                    </li>
+                @endif
+
             </ul>
         </div>
     </nav>
