@@ -8,7 +8,10 @@ class AuthController extends Controller
 {
     public function loginIndex()
     {
-        return view('login');
+        if (!session()->get('user')) {
+            return view('login');
+        }
+        return redirect()->route('home');
     }
     public function loginAction(Request $request)
     {

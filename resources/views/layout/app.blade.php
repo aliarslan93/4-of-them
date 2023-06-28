@@ -25,9 +25,25 @@
                     <a href="{!! route('home') !!}"
                         class="nav-link link-body-emphasis px-2">{!! __('Home') !!}</a>
                 </li>
+                @if (session()->has('user'))
+                    <li class="nav-item">
+                        <a href="#"
+                            class="nav-link link-body-emphasis px-2">{!! __('Authors') !!}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"
+                            class="nav-link link-body-emphasis px-2">{!! __('Add Book') !!}</a>
+                    </li>
+                @endif
             </ul>
             <ul class="nav">
                 @if (session()->has('user'))
+                <li class="nav-item">
+                    <a class="nav-link link-body-emphasis px-2">
+                        {!! session()->get('user')->first_name !!}
+                        {!! session()->get('user')->last_name !!}
+                    </a>
+                </li>
                     <li class="nav-item">
                         <a class="nav-link link-body-emphasis px-2" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
