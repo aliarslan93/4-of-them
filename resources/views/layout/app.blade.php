@@ -27,7 +27,7 @@
                 </li>
                 @if (session()->has('user'))
                     <li class="nav-item">
-                        <a href="#"
+                        <a href="{!! route('author.list') !!}"
                             class="nav-link link-body-emphasis px-2">{!! __('Authors') !!}</a>
                     </li>
                     <li class="nav-item">

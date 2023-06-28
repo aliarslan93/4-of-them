@@ -21,4 +21,9 @@ Route::post('/login', [App\Http\Controllers\AuthController::class, 'loginAction'
 Route::middleware([RoyalAuth::class])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logoutAction'])->name('logout');
+    Route::prefix('author')->group(function () {
+        Route::get('/list', [App\Http\Controllers\AuthorController::class, 'index'])->name('author.list');
+        Route::get('/detail/{id?}', [App\Http\Controllers\AuthorController::class, 'show'])->name('author.detail');
+        Route::post('/destroy/{id?}', [App\Http\Controllers\AuthorController::class, 'destroy'])->name('author.destroy');
+    });
 });
