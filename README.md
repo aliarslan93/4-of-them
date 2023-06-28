@@ -47,20 +47,18 @@ app.blade.php<br>
             CustomRepository::class
         );
 
-</code>
-
-
- - Add your repository class on your main Controller
-
-
-<code>
-use App\Repositories\Interfaces\CustomAppInterface;<br>
 <br>
- protected $customRepository; <br>
-    public function __construct(customInterface $customRepository)<br>
-    {<br>
-        $this->customRepository = $customRepository;<br>
-    }<br>
-
 </code>
+
+### Add your repository class on your main Controller
+
+<br>
+<code>
+use App\Repositories\Interfaces\CustomAppInterface;<br/>
+protected $customRepository; <br/>
+public function __construct(customInterface $customRepository) <br/>
+{<br/>
+$this->customRepository = $customRepository; <br/>
+}<br/>
+</code/>
 </details>
