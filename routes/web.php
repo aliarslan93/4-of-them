@@ -26,4 +26,9 @@ Route::middleware([RoyalAuth::class])->group(function () {
         Route::get('/detail/{id?}', [App\Http\Controllers\AuthorController::class, 'show'])->name('author.detail');
         Route::post('/destroy/{id?}', [App\Http\Controllers\AuthorController::class, 'destroy'])->name('author.destroy');
     });
+    Route::prefix('book')->group(function () {
+        Route::get('/create', [App\Http\Controllers\BookController::class, 'create'])->name('book.create');
+        Route::post('/create', [App\Http\Controllers\BookController::class, 'store'])->name('book.store');
+        Route::get('/destroy/{id?}', [App\Http\Controllers\BookController::class, 'destroy'])->name('book.destroy');
+    });
 });
