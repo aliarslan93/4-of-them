@@ -8,10 +8,25 @@ class AuthController extends Controller
 {
     public function loginIndex()
     {
-        return view('login');
+        if (!session()->get('user')) {
+            return view('login');
+        }
+        return redirect()->route('home');
     }
     public function loginAction(Request $request)
     {
-        dd($request->all());
+        $user = $request->only(
+            'email',
+            'password'
+        );
+        if ($this->appRepository->login($user)) {
+            return redirect()->route('home');
+        }
+        return redirect()->back()->with('status', 'Email or Password Wrong');
+    }
+    public function logoutAction()
+    {
+        session()->flush('user');
+        return redirect()->action('App\Http\Controllers\AuthController@loginIndex');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\RoyalAuth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginIndex'])->name('login');
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'loginAction'])->name('logged');
+
+Route::middleware([RoyalAuth::class])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logoutAction'])->name('logout');
+});
