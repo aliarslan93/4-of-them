@@ -12,6 +12,11 @@
         </div>
 
         <div class="row">
+            @if (session()->has('status'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session()->get('status') }}
+                </div>
+            @endif
             <div class="mb-3">
                 <a class="btn btn-danger btn-sm float-end {!! count($author->books) ? 'disabled' : '' !!}" href="{!! route('author.destroy', $author->id) !!}"
                     onclick="event.preventDefault();
@@ -46,7 +51,7 @@
                             <td class="table-light">{!! $book->format !!}</td>
                             <td class="table-light">{!! $book->number_of_pages !!}</td>
                             <td class="table-light">
-                                <a class="btn btn-sm btn-danger" href="">
+                                <a class="btn btn-sm btn-danger" href="{!! route('book.destroy', $book->id) !!}">
                                     {!! __('Delete') !!}
                                 </a>
                             </td>

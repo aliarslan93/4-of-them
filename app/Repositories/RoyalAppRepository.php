@@ -41,4 +41,16 @@ class RoyalAppRepository extends Request
     {
         return $this->delete("authors/$Id");
     }
+    public function addBook($request)
+    {
+        $data = $request;
+        $data['author'] = ['id' => $request['author']];
+        $data['release_date'] = date('c', strtotime($request['release_date']));
+        $data['number_of_pages'] = (int)$request['number_of_pages'];
+        $this->post("books", $data);
+    }
+    public function bookDelete($Id)
+    {
+        return $this->delete("books/$Id");
+    }
 }
