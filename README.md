@@ -53,9 +53,9 @@ app.blade.php<br>
 
 <code>use App\Repositories\Interfaces\CustomAppInterface;
 <br>protected $customRepository; 
-<br>public function __construct(customInterface $customRepository)
+<br>public function __construct(CustomAppInterface $customRepository)
 <br> {
-<br>    $this->customRepository = $customRepository;
+<br>    $this->CustomAppInterface = $customRepository;
 <br> }
 </code>
 </details>
