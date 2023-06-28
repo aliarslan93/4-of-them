@@ -1,66 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+# Summary
+This project demonstrates how to include an external package that includes Laravel and simply send a request.
+Objects entries are not related to each other (ORM). Used to make the system more efficient with the <a href="https://vitejs.dev/" _target="blank">Vite Frontend</a> tool.  
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<img src="https://www.alisaslan.com/4-of-them.png" alt="Home">
 </p>
 
-## About Laravel
+## Prerequisites
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **[Composer](https://getcomposer.org/)**
+- **[NodeJS.](https://nodejs.org/en)**
+- **[Version > PHP 8.1](https://www.php.net)**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
+Below is how you can instruct your audience on installing and setting up your app.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Get a API <code>https://candidate-testing.api.royal-apps.io/docs</code>
+- Clone the repo <br>
+<code>git clone https://github.com/aliarslan93/4-of-them.git</code><br>
+<code>cd /4-of-them</code>
 
-## Learning Laravel
+- Laravel vendor Update<br>
+ <code>composer update</code>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Install NPM packages<br>
+ <code>npm install && npm run dev</code>
+<br>
+- Artisan serve<br>
+ <code>php artisan serve</code> <br>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+You will go on your browser to <b>http://127.0.0.1:8000/</b>.
 
-## Laravel Sponsors
+## Install and Deployment
+I used vite and Laravel for this project. If you don't want to use vite, you can change the
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+app.blade.php<br>
+<code>@vite(['resources/scss/app.scss', 'resources/js/app.js']) to {!! asseet('custom.css') !!}</code>
 
-### Premium Partners
+## Add Your Custom Repository
+<details>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- You can add your custom repository to <mark style="background:#221c1c; color:white;">app\Providers\RepositoryServiceProvider.php</mark>
 
-## Contributing
+<code>
+ $this->app->bind(
+           CustomRepositoryInterface::class,
+            CustomRepository::class
+        );
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+</code>
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+ - Add your repository class on your main Controller
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<code>
+use App\Repositories\Interfaces\CustomAppInterface;<br>
+<br>
+ protected $customRepository; <br>
+    public function __construct(customInterface $customRepository)<br>
+    {<br>
+        $this->customRepository = $customRepository;<br>
+    }<br>
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+</code>
+</details>
