@@ -12,6 +12,13 @@ class AuthController extends Controller
     }
     public function loginAction(Request $request)
     {
-        dd($request->all());
+        $user = $request->only(
+            'email',
+            'password'
+        );
+        if ($this->appRepository->login($user)) {
+            return redirect()->route('home');
+        }
+        return redirect()->back()->with('status', 'Email or Password Wrong');
     }
 }
