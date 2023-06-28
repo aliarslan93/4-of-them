@@ -41,8 +41,7 @@ app.blade.php<br>
 
 - You can add your custom repository to <mark style="background:#221c1c; color:white;">app\Providers\RepositoryServiceProvider.php</mark>
 
-<code>
- $this->app->bind(
+<code>$this->app->bind(
            CustomRepositoryInterface::class,
             CustomRepository::class
         );
@@ -52,13 +51,11 @@ app.blade.php<br>
 
 ### Add your repository class on your main Controller
 
-<br>
-<code>
-use App\Repositories\Interfaces\CustomAppInterface;<br/>
-protected $customRepository; <br/>
-public function __construct(customInterface $customRepository) <br/>
-{<br/>
-$this->customRepository = $customRepository; <br/>
-}<br/>
-</code/>
+<code>use App\Repositories\Interfaces\CustomAppInterface;
+<br>protected $customRepository; 
+<br>public function __construct(customInterface $customRepository)
+<br> {
+<br>    $this->customRepository = $customRepository;
+<br> }
+</code>
 </details>
