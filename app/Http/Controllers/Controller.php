@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\RoyalAppRepository;
+use App\Repositories\Interfaces\RoyalAppInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -11,8 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
     protected $appRepository;
-    public function __construct()
+    public function __construct(RoyalAppInterface $appRepository)
     {
-        $this->appRepository = new RoyalAppRepository();
+        $this->appRepository = $appRepository;
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Interfaces\RoyalAppInterface;
 use App\Repositories\Models\Request;
 use Illuminate\Support\Facades\Session;
 
-class RoyalAppRepository extends Request
+class RoyalAppRepository extends Request implements RoyalAppInterface
 {
     public function login($user)
     {
