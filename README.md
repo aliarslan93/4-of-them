@@ -31,11 +31,10 @@ Below is how you can instruct your audience on installing and setting up your ap
 
 You will go on your browser to <b>http://127.0.0.1:8000/</b>.
 
-## Install and Deployment
-I used vite and Laravel for this project. If you don't want to use vite, you can change the
+## With Out Vite
 
 app.blade.php<br>
-<code>@vite(['resources/scss/app.scss', 'resources/js/app.js']) to {!! asseet('custom.css') !!}</code>
+<code>@vite(['resources/scss/app.scss', 'resources/js/app.js']) to {!! asset('css/bootstrap.min.css') !!}</code>
 
 ## Add Your Custom Repository
 <details>
