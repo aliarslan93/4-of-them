@@ -11,10 +11,10 @@
             </div>
             <div class="col-lg-6 ">
                 @if (session()->has('status'))
-                <div class="alert alert-warning" role="alert">
-                    {{ session()->get('status') }}
-                </div>
-            @endif
+                    <div class="alert alert-warning" role="alert">
+                        {{ session()->get('status') }}
+                    </div>
+                @endif
                 <form method="POST" action="{!! route('login') !!}">
                     @csrf
                     <div class="input-group mb-3">
