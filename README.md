@@ -1,9 +1,6 @@
 # Summary
 This project demonstrates how to include an external package that includes Laravel and simply send a request.
 Objects entries are not related to each other (ORM). Used to make the system more efficient with the <a href="https://vitejs.dev/" _target="blank">Vite Frontend</a> tool.  
-<p align="center">
-<img src="https://www.alisaslan.com/4-of-them.png" alt="Home">
-</p>
 
 ## Prerequisites
 
