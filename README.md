@@ -19,8 +19,8 @@ Below is how you can instruct your audience on installing and setting up your ap
 <code>git clone https://github.com/aliarslan93/4-of-them.git</code><br>
 <code>cd /4-of-them</code>
 
-- Rename .env.example to .env<br>
- <code>composer update</code>
+- Rename <strong>.env.example</strong> to <strong>.env</strong><br>
+ 
 
 
 - Laravel vendor Update<br>
