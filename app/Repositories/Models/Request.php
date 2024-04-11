@@ -42,11 +42,10 @@ class Request
     protected function get(string $endpoint, array $data = [], $test = false)
     {
         $this->setDefaultHeaders();
-
         return $this->client->get($endpoint, [
             'query' => $data,
             'headers' => $this->headers
-        ]);
+        ]);;
     }
 
     protected function delete($endpoint)
@@ -100,5 +99,12 @@ class Request
         $this->headers[$key] = $value;
 
         return $this;
+    }
+    public function response($response, $decode = false, $object = false)
+    {
+        if ($decode) {
+            return json_decode($response->getBody()->getContents(), $object);
+        }
+        return $response->getBody()->getContents();
     }
 }

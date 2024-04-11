@@ -4,21 +4,21 @@ namespace App\Repositories;
 
 use App\Repositories\Interfaces\RoyalAppInterface;
 use App\Repositories\Models\Request;
+use App\Repositories\Traits\Application;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 
 class RoyalAppRepository extends Request implements RoyalAppInterface
 {
+    use Application;
     public function __construct()
     {
-        $this->base_url = "https://candidate-testing.api.royal-apps.io/api/v2/";
-        $this->authorization = "d8b8c6ad19ec6bc8e8c6faf180d2cc3bfd79dffb9d91602c15ffff85ab38c185effd4520670cd7af";
-        parent::__construct();
+        $this->initializeClient();
     }
     public function login($user)
     {
-
         if ($auth = $this->post('token', $user)) {
-            $logged =  json_decode($auth->getBody()->getContents());
+            $logged =  $this->response($auth, true, false);
             Session::put('user', $logged->user);
             Session::put('token_key', $logged->token_key);
             return $logged;
@@ -35,14 +35,13 @@ class RoyalAppRepository extends Request implements RoyalAppInterface
                 'limit' => 12,
                 'page' => 1
             ]
-        ])->getBody()->getContents();
-        $response = json_decode($response);
-        return $response;
+        ]);
+
+        return $this->response($response);
     }
     public function getAuthor($id)
     {
-        $response = $this->get("authors/$id")->getBody()->getContents();
-        return json_decode($response);
+        return $this->get("authors/$id");
     }
     public function authorDelete($Id)
     {
