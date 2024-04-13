@@ -22,6 +22,10 @@ Below is how you can instruct your audience on installing and setting up your ap
 
 - Laravel vendor Update<br>
  <code>composer update</code>
+ <br>
+- Generate App Key<br>
+ <code>php artisan key:generate</code>
+<br>
 
 - Install NPM packages<br>
  <code>npm install && npm run dev</code>
